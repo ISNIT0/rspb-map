@@ -8,6 +8,7 @@ interface RSPBLayer {
     data?: Promise<any>,
     layer?: L.Layer,
     type: 'geoJSON',
+    style?: any,
 }
 
 const rspbLayers: RSPBLayer[] = [
@@ -15,18 +16,25 @@ const rspbLayers: RSPBLayer[] = [
         displayName: 'RSPB Reserves',
         url: '/public/RSPB_Reserves.geojson',
         type: 'geoJSON',
+        style: { color: 'lightblue' }
     },
     {
         displayName: 'IBAs',
         url: '/public/IBAs.geojson',
         type: 'geoJSON',
-        style:{color:'green'},
+        style: { color: 'green' },
     },
     {
         displayName: 'DEFRA Flood Risk',
         url: '/public/DEFRA_Flood_Risk.geojson',
         type: 'geoJSON',
-        style:{color:'red'},
+        style: { color: 'red' },
+    },
+    {
+        displayName: 'Constituencies',
+        url: '/public/constituencies.geojson',
+        type: 'geoJSON',
+        style: { color: 'pink' },
     },
 ];
 
@@ -58,7 +66,7 @@ async function loadAndAddLayer(layer: RSPBLayer) {
         const data = await layer.data;
 
         layer.layer = L.geoJSON(data, {
-            style:()=>{
+            style: () => {
                 return layer.style;
             },
             onEachFeature: function (feature: any, layer: any) {
@@ -73,7 +81,7 @@ async function loadAndAddLayer(layer: RSPBLayer) {
         });
     }
 
-    if(map.hasLayer(layer.layer)) {
+    if (map.hasLayer(layer.layer)) {
         map.removeLayer(layer.layer);
     } else {
         layer.layer.addTo(map);
@@ -85,8 +93,11 @@ const $controls = document.querySelector('.controls');
 rspbLayers.forEach((layer) => {
     const $button = document.createElement('button');
     $button.textContent = layer.displayName;
-    $button.onclick = function(){
+    $button.onclick = function () {
         loadAndAddLayer(layer);
+    };
+    if (layer.style) {
+        $button.style.background = layer.style.color;
     }
     $controls.append($button);
 });

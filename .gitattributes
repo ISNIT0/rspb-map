@@ -1,3 +1,4 @@
 public/DEFRA_Flood_Risk.geojson filter=lfs diff=lfs merge=lfs -text
 public/IBAs.geojson filter=lfs diff=lfs merge=lfs -text
 public/RSPB_Reserves.geojson filter=lfs diff=lfs merge=lfs -text
+public/constituencies.geojson filter=lfs diff=lfs merge=lfs -text
