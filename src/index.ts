@@ -38,6 +38,12 @@ const rspbLayers: RSPBLayer[] = [
         style: { color: 'pink' },
     },
     {
+        displayName: 'SSIs',
+        url: '/public/ssis.geojson',
+        type: 'geoJSON',
+        style: { color: 'orange' },
+    },
+    {
         displayName: 'Planning Applications',
         url: `/public/planit-sample.geojson`,
         // url: `https://www.planit.org.uk/api/applics/geojson?pg_sz=50&compress&limit=50&end_date=${(new Date()).toISOString()}`,

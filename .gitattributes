@@ -3,3 +3,4 @@ public/IBAs.geojson filter=lfs diff=lfs merge=lfs -text
 public/RSPB_Reserves.geojson filter=lfs diff=lfs merge=lfs -text
 public/constituencies.geojson filter=lfs diff=lfs merge=lfs -text
 public/planit-sample.geojson filter=lfs diff=lfs merge=lfs -text
+public/ssis.geojson filter=lfs diff=lfs merge=lfs -text
